@@ -8,10 +8,24 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
     <DefineConstants>NET461;NETFULL</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Version)' == '' ">
+    <MajorVersion Condition=" '$(MajorVersion)' == '' ">1</MajorVersion>
+    <MinorVersion Condition=" '$(MinorVersion)' == '' ">1</MinorVersion>
+    <PatchVersion Condition=" '$(PatchVersion)' == '' ">0</PatchVersion>
+    <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion)</Version>
+    <PackageId>Metrics.NETStandard</PackageId>
+    <Title>Metrics.NET</Title>
+    <Description>Metrics monitoring and reporting library</Description>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/liorss18/Metrics.NET</PackageProjectUrl>
+  </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Endpoints\index.full.html.gz" />
     <EmbeddedResource Remove="App_Packages\**" />
     <EmbeddedResource Remove="App_Packages\LibLog.4.2\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Publishing\metrics_32.png">
@@ -21,18 +35,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.5.0" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <Compile Remove="PerfCounters\PerformanceCounters.cs" />
-    <Compile Remove="PerfCounters\PerformanceCounterGauge.cs" />
-  </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

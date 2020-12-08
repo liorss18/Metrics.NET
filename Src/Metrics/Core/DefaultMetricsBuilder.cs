@@ -9,11 +9,7 @@ namespace Metrics.Core
     {
         public MetricValueProvider<double> BuildPerformanceCounter(string name, Unit unit, string counterCategory, string counterName, string counterInstance)
         {
-#if NETFULL
             return new PerformanceCounterGauge(counterCategory, counterName, counterInstance);
-#else
-            throw new NotImplementedException();
-#endif
         }
 
         public MetricValueProvider<double> BuildGauge(string name, Unit unit, Func<double> valueProvider)

@@ -28,9 +28,7 @@ namespace Metrics
         /// </summary>
         public static MetricsConfig WithSystemCounters(this MetricsConfig config, string context = DefaultMachineCountersContext)
         {
-#if NETFULL
             config.WithConfigExtension((ctx, hs) => PerformanceCounters.RegisterSystemCounters(ctx.Context(context)));
-#endif
             return config;
         }
 
@@ -42,9 +40,7 @@ namespace Metrics
         /// </summary>
         public static MetricsConfig WithAppCounters(this MetricsConfig config, string context = DefaultApplicationCountersContext)
         {
-#if NETFULL
             config.WithConfigExtension((ctx, hs) => PerformanceCounters.RegisterAppCounters(ctx.Context(context)));
-#endif
             return config;
         }
     }
