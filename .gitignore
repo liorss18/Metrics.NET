@@ -176,3 +176,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+.idea
+
+# Apple
+.DS_Store

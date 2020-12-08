@@ -20,7 +20,7 @@ namespace Metrics.Tests
 
         public MetricValueProvider<double> BuildPerformanceCounter(string name, Unit unit, string counterCategory, string counterName, string counterInstance)
         {
-            return new PerformanceCounterGauge(counterCategory, counterName, counterInstance);
+            throw new NotImplementedException();
         }
 
         public MetricValueProvider<double> BuildGauge(string name, Unit unit, Func<double> valueProvider)
